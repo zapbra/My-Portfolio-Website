@@ -1,3 +1,5 @@
+import TextListBox from "./TextListBox";
+
 const colors = [
     "bg-emerald-400",
     "bg-sky-400",
@@ -6,7 +8,7 @@ const colors = [
     "bg-rose-400",
 ];
 
-export default function TextListBox({ textArray }) {
+export default function TextListBoxWrapper({ title, textArray }) {
     const textBoxes = textArray.map((text, index) => {
         return (
             <p
@@ -20,5 +22,12 @@ export default function TextListBox({ textArray }) {
         );
     });
 
-    return <div className="flex flex-wrap gap-x-4 gap-y-6  ">{textBoxes}</div>;
+    return (
+        <div className="max-w-[600px]">
+            <h2 className="text-3xl font-light mb-4">{title}</h2>
+            <div className="bg-slate-800 px-8 py-6 rounded-3xl">
+                <TextListBox textArray={textArray} />
+            </div>
+        </div>
+    );
 }
